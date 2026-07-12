@@ -35,7 +35,6 @@ const archiveClose = document.querySelector('#archiveClose');
 const archiveLibrary = document.querySelector('#archiveLibrary');
 const libraryGrid = document.querySelector('#libraryGrid');
 const libraryFilters = [...document.querySelectorAll('.library-filters button')];
-const interludeScene = document.querySelector('.parallax-interlude');
 const archiveScene = document.querySelector('.archive-scene');
 const aboutScene = document.querySelector('.about');
 const reel = document.querySelector('#reel');
@@ -312,11 +311,11 @@ function paint() {
   const plateProgress = sceneProgress(platesScene);
   const placeProgress = sceneProgress(placesScene);
   const drinkProgress = sceneProgress(drinksScene);
-  const interludeProgress = sceneProgress(interludeScene);
   const archiveProgress = sceneProgress(archiveScene);
   const aboutProgress = sceneProgress(aboutScene);
-  const portraitExit = smoothStep(.855, .995, portraitProgress);
-  const interludeEntry = smoothStep(0, .24, interludeProgress);
+  const portraitExit = smoothStep(.79, .88, portraitProgress);
+  const portraitHandoffEntry = smoothStep(.84, .915, portraitProgress);
+  const portraitHandoffSettle = smoothStep(.9, .985, portraitProgress);
   const aboutBlur = smoothStep(.3, .58, aboutProgress);
   const aboutCopyOpacity = 1 - smoothStep(.34, .56, aboutProgress);
   const aboutContactOpacity = smoothStep(.5, .72, aboutProgress);
@@ -327,13 +326,13 @@ function paint() {
   root.style.setProperty('--portrait-progress', portraitProgress.toFixed(4));
   root.style.setProperty('--place-progress', placeProgress.toFixed(4));
   root.style.setProperty('--drink-progress', drinkProgress.toFixed(4));
-  root.style.setProperty('--interlude-progress', interludeProgress.toFixed(4));
   root.style.setProperty('--archive-progress', archiveProgress.toFixed(4));
   root.style.setProperty('--about-progress', aboutProgress.toFixed(4));
   root.style.setProperty('--about-fade', Math.max(.08, 1 - aboutProgress * .92).toFixed(4));
   root.style.setProperty('--hospitality-progress', drinkProgress.toFixed(4));
   root.style.setProperty('--portrait-exit', portraitExit.toFixed(4));
-  root.style.setProperty('--interlude-entry', interludeEntry.toFixed(4));
+  root.style.setProperty('--portrait-handoff-entry', portraitHandoffEntry.toFixed(4));
+  root.style.setProperty('--portrait-handoff-settle', portraitHandoffSettle.toFixed(4));
   root.style.setProperty('--about-image-blur', (aboutBlur * 8).toFixed(3));
   root.style.setProperty('--about-copy-opacity', aboutCopyOpacity.toFixed(4));
   root.style.setProperty('--about-contact-opacity', aboutContactOpacity.toFixed(4));
@@ -346,7 +345,8 @@ function paint() {
     showPlate(Math.min(plateSlides.length - 1, Math.floor(plateProgress * plateSlides.length)));
   }
   if (manualPortraitScrollY === null) {
-    showPortrait(Math.min(portraitSlides.length - 1, Math.floor(portraitProgress * portraitSlides.length)));
+    const portraitGalleryProgress = Math.min(1, portraitProgress / .84);
+    showPortrait(Math.min(portraitSlides.length - 1, Math.floor(portraitGalleryProgress * portraitSlides.length)));
   }
   showPlace(Math.min(placeSlides.length - 1, Math.floor(placeProgress * placeSlides.length)));
   if (manualDrinkScrollY === null) {
@@ -358,6 +358,12 @@ function paint() {
     const offset = (rect.top - window.innerHeight / 2) * Number(image.dataset.speed || 0);
     image.style.transform = `translate3d(0, ${offset.toFixed(1)}px, 0)`;
   });
+  const headerProbe = 72;
+  const headerNeedsSpace = [portraitsScene, placesScene, drinksScene, archiveScene].some(scene => {
+    const rect = scene.getBoundingClientRect();
+    return rect.top <= headerProbe && rect.bottom >= headerProbe;
+  });
+  body.classList.toggle('header-needs-space', headerNeedsSpace);
   ticking = false;
 }
 
@@ -428,12 +434,7 @@ const chapterObserver = new IntersectionObserver(entries => {
     }
   });
 }, { threshold: .52 });
-[interludeScene, drinksScene, archiveScene, aboutScene].forEach(scene => chapterObserver.observe(scene));
-
-const interludeViewObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => entry.target.classList.toggle('is-in-view', entry.isIntersecting));
-}, { threshold: .12 });
-interludeViewObserver.observe(interludeScene);
+[portraitsScene, drinksScene, archiveScene, aboutScene].forEach(scene => chapterObserver.observe(scene));
 
 window.addEventListener('scroll', requestPaint, { passive: true });
 window.addEventListener('resize', requestPaint);

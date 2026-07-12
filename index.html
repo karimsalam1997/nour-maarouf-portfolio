@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Serif+Display:ital@0;1&family=Noto+Kufi+Arabic:wght@500;700;900&family=Noto+Naskh+Arabic:wght@500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.23/dist/lenis.css">
-  <link rel="stylesheet" href="styles.css?v=17">
+  <link rel="stylesheet" href="styles.css?v=19">
 </head>
 <body>
   <div class="loader" id="loader">
@@ -95,6 +95,16 @@
           <p>Commissioned and personal · Seven frames</p>
         </div>
         <div class="portrait-title"><span>FACES</span><em lang="ar" dir="rtl">وجوه</em></div>
+        <div class="portrait-handoff" aria-live="polite">
+          <p class="portrait-handoff-kicker">The frame stays. The way of seeing changes.</p>
+          <div class="portrait-eye-marker" aria-hidden="true"><i></i><i></i></div>
+          <h2>
+            <span class="handoff-one">ONE EYE.</span>
+            <span class="handoff-places">DIFFERENT PLACES.</span>
+            <em lang="ar" dir="rtl"><b>عين واحدة.</b><b>أماكن مختلفة.</b></em>
+          </h2>
+          <p class="portrait-handoff-foot">Portrait becomes place · الصورة تصبح مكاناً</p>
+        </div>
         <div class="portrait-stage">
           <figure class="portrait-slide is-active"><img src="assets/portrait-red-01.jpeg" alt="Portrait against a red projected background"><figcaption>Portrait 01 · Direct gaze</figcaption></figure>
           <figure class="portrait-slide"><img src="assets/portrait-red-02.jpeg" alt="Portrait with a white glove against red light"><figcaption>Portrait 02 · Red light</figcaption></figure>
@@ -140,19 +150,6 @@
           <button id="plateNext" aria-label="Next food photograph">→</button>
         </div>
         <div class="plate-progress"><i></i></div>
-      </div>
-    </section>
-
-    <section class="interlude parallax-interlude" id="interlude">
-      <div class="interlude-layers" aria-hidden="true">
-        <img class="interlude-layer interlude-back" src="assets/portrait-close-01.jpeg" alt="">
-        <img class="interlude-layer interlude-mid" src="assets/portrait-close-01.jpeg" alt="">
-        <img class="interlude-layer interlude-front" src="assets/portrait-close-01.jpeg" alt="">
-      </div>
-      <div class="interlude-copy">
-        <p class="section-label">Between frames · بين اللقطات</p>
-        <blockquote>One eye.<br>Different places.<em lang="ar" dir="rtl">عين واحدة<br>وأماكن مختلفة</em></blockquote>
-        <span>Nour on set · نور أثناء العمل</span>
       </div>
     </section>
 
@@ -303,6 +300,6 @@
   </main>
 
   <script src="https://unpkg.com/lenis@1.3.23/dist/lenis.min.js"></script>
-  <script src="script.js?v=17"></script>
+  <script src="script.js?v=19"></script>
 </body>
 </html>
