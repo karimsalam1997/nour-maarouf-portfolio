@@ -4,3 +4,5 @@ index-v*.html
 styles-v*.css
 script-v*.js
 
+.vercel
+.env*
