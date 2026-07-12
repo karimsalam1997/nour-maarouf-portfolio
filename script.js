@@ -344,7 +344,12 @@ const chapterObserver = new IntersectionObserver(entries => {
     }
   });
 }, { threshold: .52 });
-[drinksScene, archiveScene, aboutScene].forEach(scene => chapterObserver.observe(scene));
+[interludeScene, drinksScene, archiveScene, aboutScene].forEach(scene => chapterObserver.observe(scene));
+
+const interludeViewObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => entry.target.classList.toggle('is-in-view', entry.isIntersecting));
+}, { threshold: .12 });
+interludeViewObserver.observe(interludeScene);
 
 window.addEventListener('scroll', requestPaint, { passive: true });
 window.addEventListener('resize', requestPaint);

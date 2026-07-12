@@ -668,3 +668,153 @@ p, h1, h2, blockquote { text-wrap: pretty; }
   .site-footer h2 { font-size: 19vw; line-height: .75; }
   .site-footer h2 em { font-size: .68em; }
 }
+
+/* V9 portrait hold: one continuous frame, breathing rather than sliced */
+.portrait-slide.portrait-vertical {
+  background: #1a1714;
+  isolation: isolate;
+}
+.portrait-slide.portrait-vertical .portrait-backdrop {
+  inset: -7%;
+  width: 114%;
+  height: 114%;
+  object-fit: cover;
+  object-position: 50% 42%;
+  filter: blur(34px) saturate(.72) brightness(.52);
+  transform: scale(1.08);
+}
+.portrait-slide.portrait-vertical.is-active .portrait-backdrop {
+  filter: blur(27px) saturate(.8) brightness(.58);
+  transform: scale(1.04);
+}
+.portrait-slide.portrait-vertical::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(11,14,12,.36), transparent 23%, transparent 77%, rgba(11,14,12,.36));
+  pointer-events: none;
+}
+.portrait-slide.portrait-vertical .portrait-subject,
+.portrait-slide.portrait-vertical.is-active .portrait-subject {
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: contain;
+  object-position: center;
+  filter: none;
+  transform: none;
+  box-shadow: none;
+}
+.portrait-slide.portrait-vertical figcaption { z-index: 4; }
+
+.parallax-interlude {
+  min-height: 180vh;
+  background: #071512;
+  isolation: isolate;
+}
+.interlude-layers {
+  height: 100vh;
+  height: 100svh;
+  background: #071512;
+}
+.interlude-layers::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 46% 63% at 67% 47%, transparent 8%, rgba(3,15,13,.08) 54%, rgba(3,15,13,.48) 100%),
+    linear-gradient(90deg, rgba(3,15,13,.8), rgba(3,15,13,.12) 60%, rgba(3,15,13,.28));
+  pointer-events: none;
+}
+.interlude-layer {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-position: center 47%;
+  clip-path: none;
+}
+.interlude-back {
+  filter: blur(22px) saturate(.65) brightness(.5);
+  transform: scale(calc(1.11 - var(--interlude-progress, 0) * .025));
+}
+.interlude-mid {
+  opacity: .94;
+  filter: saturate(.78) contrast(1.04) brightness(.74);
+  transform: scale(calc(1.035 + var(--interlude-progress, 0) * .018));
+  -webkit-mask-image: radial-gradient(ellipse 59% 76% at 66% 47%, #000 25%, rgba(0,0,0,.92) 60%, transparent 92%);
+  mask-image: radial-gradient(ellipse 59% 76% at 66% 47%, #000 25%, rgba(0,0,0,.92) 60%, transparent 92%);
+}
+.interlude-front {
+  opacity: .18;
+  filter: contrast(1.12) saturate(.92) brightness(.84);
+  transform: scale(calc(1.075 - var(--interlude-progress, 0) * .025));
+  mix-blend-mode: screen;
+  -webkit-mask-image: radial-gradient(ellipse 35% 48% at 67% 45%, #000, transparent 78%);
+  mask-image: radial-gradient(ellipse 35% 48% at 67% 45%, #000, transparent 78%);
+}
+.parallax-interlude .interlude-copy {
+  position: sticky;
+  top: 0;
+  inset: auto;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  margin-top: -100vh;
+  padding: 12vh var(--pad) 7vh;
+  background: transparent;
+}
+.parallax-interlude blockquote {
+  max-width: 68vw;
+  text-shadow: 0 3px 32px rgba(0,0,0,.28);
+}
+.parallax-interlude.chapter-arrived .interlude-copy::after {
+  content: "";
+  position: absolute;
+  left: var(--pad);
+  bottom: 4.5vh;
+  width: 76px;
+  height: 1px;
+  background: var(--flash);
+  transform-origin: left;
+  animation: interlude-arrival 1.2s var(--ease) both;
+}
+.parallax-interlude.is-in-view .interlude-mid {
+  animation: portrait-breathe 6.5s ease-in-out infinite;
+}
+.parallax-interlude.is-in-view .interlude-front {
+  animation: portrait-light-breathe 6.5s ease-in-out infinite;
+}
+@keyframes portrait-breathe {
+  0%, 100% { opacity: .9; filter: saturate(.74) contrast(1.03) brightness(.71); }
+  50% { opacity: 1; filter: saturate(.86) contrast(1.06) brightness(.79); }
+}
+@keyframes portrait-light-breathe {
+  0%, 100% { opacity: .11; }
+  50% { opacity: .24; }
+}
+@keyframes interlude-arrival {
+  from { opacity: 0; transform: scaleX(0); }
+  to { opacity: .8; transform: scaleX(1); }
+}
+
+@media (max-width: 760px) {
+  .portrait-slide.portrait-vertical .portrait-subject,
+  .portrait-slide.portrait-vertical.is-active .portrait-subject {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transform: none;
+  }
+  .parallax-interlude { min-height: 168svh; }
+  .interlude-layer { object-position: 58% center; }
+  .interlude-mid {
+    -webkit-mask-image: radial-gradient(ellipse 72% 68% at 58% 48%, #000 26%, rgba(0,0,0,.93) 64%, transparent 96%);
+    mask-image: radial-gradient(ellipse 72% 68% at 58% 48%, #000 26%, rgba(0,0,0,.93) 64%, transparent 96%);
+  }
+  .parallax-interlude .interlude-copy { padding: 15vh var(--pad) 8vh; }
+  .parallax-interlude blockquote { max-width: 92vw; font-size: 15.5vw; }
+}
