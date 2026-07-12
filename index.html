@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071b18">
+  <meta name="description" content="Nour, an independent photographer in Damascus working across portraits, restaurants and events.">
+  <title>Nour Maarouf · Photographer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Serif+Display:ital@0;1&family=Noto+Kufi+Arabic:wght@500;700;900&family=Noto+Naskh+Arabic:wght@500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=14">
+</head>
+<body>
+  <div class="loader" id="loader">
+    <img src="assets/nour-camera-blur.jpeg" alt="" fetchpriority="high">
+    <div class="loader-shade"></div>
+    <div class="loader-title"><span>N</span><span>O</span><span>U</span><span>R</span></div>
+    <p>Independent photographer · Damascus, Syria</p>
+    <button id="enterSite">Enter portfolio <span>Sound on ↘</span></button>
+  </div>
+
+  <div class="grain" aria-hidden="true"></div>
+  <audio class="ambient-media" id="ambientAudio" preload="auto" loop aria-hidden="true">
+    <source src="assets/nour-soundtrack.mp3" type="audio/mpeg">
+    <source src="assets/nour-soundtrack.mp4" type="audio/mp4">
+  </audio>
+
+  <header class="site-header">
+    <a class="wordmark" href="#top" aria-label="Nour Maarouf home">NOUR MAAROUF</a>
+    <div class="header-actions">
+      <button class="audio-toggle" id="audioToggle" aria-pressed="false" aria-label="Play background audio">
+        <span class="audio-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+        <span class="audio-label">Sound</span>
+      </button>
+      <a class="contact-link" href="#contact">Enquire</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <nav class="menu-panel" id="menuPanel" aria-hidden="true">
+    <div class="menu-reel" aria-hidden="true">
+      <img src="assets/portrait-red-02.jpeg" alt="">
+      <img src="assets/food-carpaccio.jpeg" alt="">
+      <img src="assets/place-hills-01.jpeg" alt="">
+    </div>
+    <div class="menu-copy">
+      <p>Index · 01—06</p>
+      <a href="#top">Home</a>
+      <a href="#portraits">Portraits</a>
+      <a href="#places">Places</a>
+      <a href="#hospitality">Hospitality</a>
+      <a href="#archive">Archive</a>
+      <a href="#about">About Nour</a>
+      <a href="#contact">Contact</a>
+      <small>Damascus · Syria</small>
+    </div>
+  </nav>
+
+  <main id="top">
+    <section class="hero scroll-scene" id="hero">
+      <div class="hero-sticky">
+        <img class="hero-image hero-image-blur" src="assets/nour-camera.jpeg" alt="Nour holding her camera in the studio" fetchpriority="high">
+        <img class="hero-image hero-image-sharp hero-image-stillness" src="assets/portrait-formal-01.jpeg" alt="Formal portrait of Nour Maarouf" fetchpriority="high">
+        <div class="hero-grid" aria-hidden="true"></div>
+        <p class="hero-index">Frame 001<br>Independent photographer</p>
+        <h1 class="hero-latin"><span>NOUR</span><span>MAAROUF</span></h1>
+        <div class="hero-arabic" lang="ar" dir="rtl" aria-label="Nour Maarouf in Arabic">نور معروف</div>
+        <div class="hero-deck">
+          <p>Portraits · Restaurants · Events</p>
+          <p>Independent photographer<br>in Damascus, Syria.</p>
+        </div>
+        <div class="hero-scroll"><span></span>Scroll slowly to focus</div>
+      </div>
+    </section>
+
+    <section class="intro" data-reveal>
+      <p class="section-label">Nour · Independent photographer · Damascus</p>
+      <h2>
+        <span class="intro-words"><span>Faces.</span><span>Tables.</span><span>Places.</span></span>
+        <em>Each asks for its own light.</em>
+        <b lang="ar" dir="rtl">وجوه. موائد. أماكن.</b>
+      </h2>
+      <div class="intro-foot">
+        <p>Nour works across portrait commissions, restaurants and events. The subject changes. Her attention does not.</p>
+        <span>Selected work · 38 frames</span>
+      </div>
+    </section>
+
+    <section class="portraits-scene" id="portraits">
+      <div class="portraits-sticky">
+        <div class="project-head project-head-light">
+          <p><span>01</span> Portraits</p>
+          <p>Commissioned and personal · Seven frames</p>
+        </div>
+        <div class="portrait-title"><span>FACES</span><em lang="ar" dir="rtl">وجوه</em></div>
+        <div class="portrait-stage">
+          <figure class="portrait-slide is-active"><img src="assets/portrait-red-01.jpeg" alt="Portrait against a red projected background"><figcaption>Portrait 01 · Direct gaze</figcaption></figure>
+          <figure class="portrait-slide"><img src="assets/portrait-red-02.jpeg" alt="Portrait with a white glove against red light"><figcaption>Portrait 02 · Red light</figcaption></figure>
+          <figure class="portrait-slide"><img src="assets/portrait-red-03.jpeg" alt="Portrait with hand beneath chin against red light"><figcaption>Portrait 03 · Held frame</figcaption></figure>
+          <figure class="portrait-slide portrait-vertical">
+            <img class="portrait-backdrop" src="assets/portrait-formal-01.jpeg" alt="" aria-hidden="true">
+            <img class="portrait-subject" src="assets/portrait-formal-01.jpeg" alt="Formal portrait in a black turtleneck">
+            <figcaption>Portrait 04 · Stillness</figcaption>
+          </figure>
+          <figure class="portrait-slide"><img src="assets/portrait-green-01.jpeg" alt="Close portrait beside a tree"><figcaption>Portrait 05 · Looking down</figcaption></figure>
+          <figure class="portrait-slide"><img src="assets/portrait-green-02.jpeg" alt="Outdoor portrait looking into the camera"><figcaption>Portrait 06 · Looking back</figcaption></figure>
+          <figure class="portrait-slide"><img src="assets/portrait-close-01.jpeg" alt="Close portrait with freckles"><figcaption>Portrait 07 · Close enough</figcaption></figure>
+        </div>
+        <div class="portrait-controls">
+          <button id="portraitPrev" aria-label="Previous portrait">←</button>
+          <div class="portrait-count"><strong id="portraitCurrent">01</strong><span>/ 07</span></div>
+          <button id="portraitNext" aria-label="Next portrait">→</button>
+        </div>
+        <div class="portrait-progress"><i></i></div>
+      </div>
+    </section>
+
+    <section class="plates-scene legacy-plates" id="plates" hidden aria-hidden="true">
+      <div class="plates-sticky">
+        <div class="project-head">
+          <p><span>02</span> Table studies</p>
+          <p>Food photography · Eight frames</p>
+        </div>
+        <div class="plate-title" aria-hidden="true"><span>TABLE</span><em>studies</em></div>
+        <div class="plate-stage" id="plateStage">
+          <figure class="plate-slide is-active"><img src="assets/food-steak-fries.jpeg" alt="Steak, fries and greens photographed in low light"><figcaption>Plate 01 · Char and salt</figcaption></figure>
+          <figure class="plate-slide"><img src="assets/food-strawberry-salad.jpeg" alt="Strawberry, cheese and green salad"><figcaption>Plate 02 · Red, green, white</figcaption></figure>
+          <figure class="plate-slide"><img src="assets/food-green-salad.jpeg" alt="Green seaweed salad in a dark bowl"><figcaption>Plate 03 · Folded greens</figcaption></figure>
+          <figure class="plate-slide"><img src="assets/food-prawn-salad.jpeg" alt="Prawn salad in a curved bowl"><figcaption>Plate 04 · Four prawns</figcaption></figure>
+          <figure class="plate-slide"><img src="assets/food-chicken-salad.jpeg" alt="Grilled chicken with green salad"><figcaption>Plate 05 · Fire and leaves</figcaption></figure>
+          <figure class="plate-slide"><img src="assets/food-cured-beef.jpeg" alt="Cured beef and rocket on a wooden board"><figcaption>Plate 06 · On the board</figcaption></figure>
+          <figure class="plate-slide"><img src="assets/food-carpaccio.jpeg" alt="Carpaccio arranged around greens"><figcaption>Plate 07 · A full circle</figcaption></figure>
+          <figure class="plate-slide"><img src="assets/food-lamb-chop.jpeg" alt="Grilled chop, potatoes and greens"><figcaption>Plate 08 · After the grill</figcaption></figure>
+        </div>
+        <div class="plate-controls">
+          <button id="platePrev" aria-label="Previous food photograph">←</button>
+          <div class="plate-count"><strong id="plateCurrent">01</strong><span>/ 08</span></div>
+          <button id="plateNext" aria-label="Next food photograph">→</button>
+        </div>
+        <div class="plate-progress"><i></i></div>
+      </div>
+    </section>
+
+    <section class="interlude parallax-interlude">
+      <div class="interlude-layers" aria-hidden="true">
+        <img class="interlude-layer interlude-back" src="assets/nour-studio.jpeg" alt="">
+        <img class="interlude-layer interlude-mid" src="assets/nour-studio.jpeg" alt="">
+        <img class="interlude-layer interlude-front" src="assets/nour-studio.jpeg" alt="">
+      </div>
+      <div class="interlude-copy">
+        <p class="section-label">Between frames · بين اللقطات</p>
+        <blockquote>One eye.<br>Different places.<em lang="ar" dir="rtl">عين واحدة<br>وأماكن مختلفة</em></blockquote>
+        <span>Nour on set · نور أثناء العمل</span>
+      </div>
+    </section>
+
+    <section class="places-scene" id="places">
+      <div class="places-sticky">
+        <div class="project-head project-head-light">
+          <p><span>02</span> Places · أماكن</p>
+          <p>Across the road · Five frames</p>
+        </div>
+        <div class="places-title"><span>NEAR</span><em lang="ar" dir="rtl">أماكن</em><span>FAR</span></div>
+        <div class="places-stage">
+          <figure class="place-slide is-active"><img src="assets/place-hills-01.jpeg" alt="Layered hills in warm evening light"><figcaption>Place 01 · Hills at dusk</figcaption></figure>
+          <figure class="place-slide"><img src="assets/place-hills-02.jpeg" alt="A village across green hills"><figcaption>Place 02 · Across the valley</figcaption></figure>
+          <figure class="place-slide"><img src="assets/place-garden-01.jpeg" alt="A view through branches toward the hills"><figcaption>Place 03 · Through the branches</figcaption></figure>
+          <figure class="place-slide"><img src="assets/place-garden-02.jpeg" alt="Sunlit clearing beneath trees"><figcaption>Place 04 · The clearing</figcaption></figure>
+          <figure class="place-slide"><img src="assets/place-port-01.jpeg" alt="Shipping containers beside the sea"><figcaption>Place 05 · Port and water</figcaption></figure>
+        </div>
+        <div class="places-meta"><span>Frame <strong id="placeCurrent">01</strong> / 05</span><span>The horizon stays level.</span></div>
+      </div>
+    </section>
+
+    <section class="drinks-scene hospitality-portal" id="hospitality">
+      <div class="hospitality-cover">
+        <img src="assets/hospitality-group.jpeg" alt="Friends sharing drinks in a restaurant">
+        <div class="hospitality-shade"></div>
+        <p class="section-label">03 · Restaurants, people and atmosphere</p>
+        <h2>HOSPITALITY<em lang="ar" dir="rtl">ضيافة</em></h2>
+        <p>Food, drink, service and the people who give a room its life.</p>
+        <button class="hospitality-open" id="hospitalityOpen" type="button">Enter the restaurant <span>↗</span></button>
+      </div>
+      <div class="hospitality-drawer" id="hospitalityDrawer" aria-hidden="true">
+        <button class="hospitality-close" id="hospitalityClose" type="button" aria-label="Close hospitality gallery">Close ×</button>
+      <div class="drinks-sticky">
+        <div class="project-head project-head-light">
+          <p><span>03</span> Hospitality · ضيافة</p>
+          <p>Selected restaurant work · Twelve frames</p>
+        </div>
+        <h2>AT THE<br><em>TABLE.</em><b lang="ar" dir="rtl">على المائدة</b></h2>
+        <p class="hospitality-deck">From the first glass<br>to the last guest.</p>
+        <button class="drink-stage" id="drinkStage" type="button" aria-label="Show next hospitality photograph">
+          <img class="drink-slide is-active" data-label="First pour" src="assets/drink-latte.jpeg" alt="Layered iced latte on a glass table">
+          <img class="drink-slide" data-label="Gold on glass" src="assets/drink-gold.jpeg" alt="Golden cocktail on a glass table">
+          <img class="drink-slide" data-label="After dark" src="assets/drink-highball.jpeg" alt="Dark highball on a glass table">
+          <img class="drink-slide" data-label="Last glass" src="assets/drink-martini.jpeg" alt="Dark martini on a glass table">
+          <img class="drink-slide hospitality-portrait" data-label="Three drinks" src="assets/hospitality-cocktail-trio.jpeg" alt="Three cocktails arranged on a dark table">
+          <img class="drink-slide hospitality-portrait" data-label="The pour" src="assets/hospitality-motion.jpeg" alt="Bartender pouring a drink in warm motion blur">
+          <img class="drink-slide hospitality-portrait" data-label="Night portrait" src="assets/hospitality-model-drinks.jpeg" alt="Guest in black seated beside two cocktails">
+          <img class="drink-slide hospitality-portrait" data-label="Behind the bar" src="assets/hospitality-bartender.jpeg" alt="Bartender smiling behind the bar">
+          <img class="drink-slide hospitality-wide" data-label="Together" src="assets/hospitality-group.jpeg" alt="Three guests sharing drinks on a sofa">
+          <img class="drink-slide hospitality-portrait" data-label="Between drinks" src="assets/hospitality-guest.jpeg" alt="Guest laughing with a green cocktail">
+          <img class="drink-slide hospitality-portrait" data-label="The whole table" src="assets/hospitality-table-candid.jpeg" alt="Guests laughing around a table filled with food">
+          <img class="drink-slide hospitality-portrait" data-label="Last plate" src="assets/hospitality-food-cubes.jpeg" alt="Sesame crusted food arranged on a dark plate">
+          <span class="drink-tap">Tap for the next frame</span>
+        </button>
+        <div class="drink-meta"><span>Frame <strong id="drinkCurrent">01</strong> / 12</span><span id="hospitalityLabel">First pour</span></div>
+      </div>
+      </div>
+    </section>
+
+    <section class="contact-sheet archive-scene" id="archive" aria-labelledby="archive-title">
+      <div class="archive-hero">
+        <img src="assets/nour-architecture.jpeg" alt="Nour photographing historic stone architecture">
+        <div class="archive-shade"></div>
+        <p class="section-label">04 · Field work</p>
+        <h2 id="archive-title">THE ARCHIVE<em lang="ar" dir="rtl">الأرشيف</em></h2>
+        <p class="archive-note">Portraits, places, events and commissioned work.</p>
+        <button class="archive-open" id="archiveOpen" type="button">Open the complete library <span>38 frames ↗</span></button>
+      </div>
+      <header data-reveal>
+        <p class="section-label">Proofs · Across disciplines</p>
+        <h2 id="sheet-title">The contact<br><em>sheet.</em></h2>
+        <p>Move across the row. Portrait, plate and horizon meet in one working archive.</p>
+      </header>
+      <div class="reel" id="reel">
+        <figure><img src="assets/food-steak-fries.jpeg" alt="Steak and fries"><figcaption>01 · Food</figcaption></figure>
+        <figure><img src="assets/food-strawberry-salad.jpeg" alt="Strawberry salad"><figcaption>02 · Food</figcaption></figure>
+        <figure><img src="assets/food-green-salad.jpeg" alt="Green salad"><figcaption>03 · Food</figcaption></figure>
+        <figure><img src="assets/food-prawn-salad.jpeg" alt="Prawn salad"><figcaption>04 · Food</figcaption></figure>
+        <figure><img src="assets/food-chicken-salad.jpeg" alt="Chicken salad"><figcaption>05 · Food</figcaption></figure>
+        <figure><img src="assets/food-cured-beef.jpeg" alt="Cured beef"><figcaption>06 · Food</figcaption></figure>
+        <figure><img src="assets/food-carpaccio.jpeg" alt="Carpaccio"><figcaption>07 · Food</figcaption></figure>
+        <figure><img src="assets/food-lamb-chop.jpeg" alt="Grilled chop"><figcaption>08 · Food</figcaption></figure>
+        <figure><img src="assets/drink-latte.jpeg" alt="Iced latte"><figcaption>09 · Drink</figcaption></figure>
+        <figure><img src="assets/drink-gold.jpeg" alt="Golden cocktail"><figcaption>10 · Drink</figcaption></figure>
+        <figure><img src="assets/drink-highball.jpeg" alt="Highball"><figcaption>11 · Drink</figcaption></figure>
+        <figure><img src="assets/drink-martini.jpeg" alt="Martini"><figcaption>12 · Drink</figcaption></figure>
+        <figure><img src="assets/portrait-red-01.jpeg" alt="Red portrait"><figcaption>13 · Portrait</figcaption></figure>
+        <figure><img src="assets/portrait-red-02.jpeg" alt="Red portrait with glove"><figcaption>14 · Portrait</figcaption></figure>
+        <figure><img src="assets/portrait-red-03.jpeg" alt="Red portrait with hand"><figcaption>15 · Portrait</figcaption></figure>
+        <figure><img src="assets/portrait-formal-01.jpeg" alt="Formal portrait"><figcaption>16 · Portrait</figcaption></figure>
+        <figure><img src="assets/portrait-green-01.jpeg" alt="Outdoor portrait"><figcaption>17 · Portrait</figcaption></figure>
+        <figure><img src="assets/portrait-green-02.jpeg" alt="Outdoor portrait looking up"><figcaption>18 · Portrait</figcaption></figure>
+        <figure><img src="assets/portrait-close-01.jpeg" alt="Close portrait"><figcaption>19 · Portrait</figcaption></figure>
+        <figure><img src="assets/place-hills-01.jpeg" alt="Hills"><figcaption>20 · Place</figcaption></figure>
+        <figure><img src="assets/place-hills-02.jpeg" alt="Valley"><figcaption>21 · Place</figcaption></figure>
+        <figure><img src="assets/place-garden-01.jpeg" alt="View through branches"><figcaption>22 · Place</figcaption></figure>
+        <figure><img src="assets/place-garden-02.jpeg" alt="Clearing beneath trees"><figcaption>23 · Place</figcaption></figure>
+        <figure><img src="assets/place-port-01.jpeg" alt="Port"><figcaption>24 · Place</figcaption></figure>
+        <figure><img src="assets/hospitality-cocktail-trio.jpeg" alt="Three cocktails"><figcaption>25 · Hospitality</figcaption></figure>
+        <figure><img src="assets/hospitality-motion.jpeg" alt="Bartender in motion"><figcaption>26 · Hospitality</figcaption></figure>
+        <figure><img src="assets/hospitality-model-drinks.jpeg" alt="Guest beside cocktails"><figcaption>27 · Hospitality</figcaption></figure>
+        <figure><img src="assets/hospitality-group-graphic.jpeg" alt="Restaurant campaign with three friends"><figcaption>28 · Campaign</figcaption></figure>
+        <figure><img src="assets/hospitality-bartender.jpeg" alt="Bartender portrait"><figcaption>29 · Hospitality</figcaption></figure>
+        <figure><img src="assets/hospitality-group.jpeg" alt="Friends sharing drinks"><figcaption>30 · Event</figcaption></figure>
+        <figure><img src="assets/hospitality-food-cubes.jpeg" alt="Sesame crusted food"><figcaption>31 · Food</figcaption></figure>
+        <figure><img src="assets/hospitality-table-candid.jpeg" alt="Guests around a full table"><figcaption>32 · Event</figcaption></figure>
+        <figure><img src="assets/hospitality-guest.jpeg" alt="Guest holding a cocktail"><figcaption>33 · Event</figcaption></figure>
+      </div>
+      <div class="reel-hint">Drag · swipe · shift + wheel <span>→</span></div>
+      <div class="archive-library" id="archiveLibrary" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="library-title">
+        <div class="library-head">
+          <div>
+            <p class="section-label">Nour Maarouf · Complete image library</p>
+            <h2 id="library-title">ALL FRAMES<em lang="ar" dir="rtl">كل الصور</em></h2>
+          </div>
+          <button class="library-close" id="archiveClose" type="button" aria-label="Close the archive library">Close ×</button>
+        </div>
+        <div class="library-filters" aria-label="Filter the image library">
+          <button class="is-active" type="button" data-filter="all">All</button>
+          <button type="button" data-filter="portrait">Portraits</button>
+          <button type="button" data-filter="place">Places</button>
+          <button type="button" data-filter="hospitality">Hospitality</button>
+          <button type="button" data-filter="nour">Nour on set</button>
+        </div>
+        <div class="library-grid" id="libraryGrid"></div>
+        <p class="library-end">Damascus, Syria · Selected work by Nour Maarouf</p>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="about-images">
+        <img class="about-a" src="assets/nour-blue-portrait.jpg" alt="Sideways blue portrait of Nour Maarouf">
+        <img class="about-b" src="assets/nour-blue-portrait.jpg" alt="" aria-hidden="true">
+        <img class="about-c" src="assets/nour-blue-portrait.jpg" alt="" aria-hidden="true">
+      </div>
+      <div class="about-copy" data-reveal>
+        <p class="section-label">05 · Behind the lens · خلف العدسة</p>
+        <h2>NOUR FOLLOWS<br><em>THE LIGHT.</em><b lang="ar" dir="rtl">نور تتبع الضوء</b></h2>
+        <p>Nour is an independent photographer based in Damascus, Syria. She works across portraits, restaurants and events, moving between controlled sets and the world as she finds it.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <img src="assets/nour-blue-portrait.jpg" alt="" aria-hidden="true">
+    <div class="footer-shade"></div>
+    <p class="section-label">Commissions · Collaborations</p>
+    <h2><span>Work with Nour</span><em lang="ar" dir="rtl">اعملوا مع نور</em></h2>
+    <p class="contact-placeholder">Contact details to be added</p>
+    <div class="footer-bottom"><span>Nour · Independent photographer</span><span>Damascus · Syria</span></div>
+  </footer>
+
+  <script src="script.js?v=14"></script>
+</body>
+</html>
