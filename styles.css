@@ -818,3 +818,132 @@ p, h1, h2, blockquote { text-wrap: pretty; }
   .parallax-interlude .interlude-copy { padding: 15vh var(--pad) 8vh; }
   .parallax-interlude blockquote { max-width: 92vw; font-size: 15.5vw; }
 }
+
+/* V10 continuous mobile chapters and one pinned closing image */
+.portraits-sticky > .project-head,
+.portrait-title,
+.portrait-controls,
+.portrait-progress {
+  opacity: calc(1 - var(--portrait-exit, 0));
+  transition: opacity .12s linear;
+}
+.portrait-stage::after { opacity: calc(1 - var(--portrait-exit, 0)); }
+.portrait-slide:last-child figcaption { opacity: calc(1 - var(--portrait-exit, 0)); }
+.portrait-slide:last-child.is-active > img {
+  object-position: center 47%;
+  transform: scale(calc(1 + var(--portrait-exit, 0) * .035));
+  filter: saturate(calc(1 - var(--portrait-exit, 0) * .22)) brightness(calc(1 - var(--portrait-exit, 0) * .24));
+}
+.parallax-interlude .interlude-copy {
+  opacity: var(--interlude-entry, 0);
+  transform: translate3d(0, calc((1 - var(--interlude-entry, 0)) * 2.5vh), 0);
+  will-change: opacity, transform;
+}
+
+.hospitality-cover h2 { right: var(--pad); max-width: none; }
+.hospitality-cover h2 em { max-width: 100%; }
+.archive-hero h2 { bottom: 18vh; pointer-events: none; }
+.archive-open { bottom: 4.5vh; }
+
+.about {
+  height: 300vh;
+  min-height: 0;
+  overflow: clip;
+  background: #08242a;
+}
+.about-images {
+  filter: blur(calc(var(--about-image-blur, 0) * 1px));
+  transform: scale(calc(1 + var(--about-image-blur, 0) * .0025));
+  transform-origin: center;
+  will-change: filter, transform;
+}
+.about-images::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  inset: -20%;
+  opacity: var(--about-sun, 0);
+  background:
+    radial-gradient(circle at 20% 18%, rgba(255,246,198,.88) 0 2%, rgba(255,213,133,.38) 6%, transparent 24%),
+    conic-gradient(from 206deg at 20% 18%, transparent 0 7%, rgba(255,231,174,.22) 9%, transparent 14% 21%, rgba(255,238,193,.14) 24%, transparent 31% 100%);
+  mix-blend-mode: screen;
+  transform: translate3d(calc(var(--about-progress, 0) * 14vw), calc(var(--about-progress, 0) * 7vh), 0) rotate(4deg);
+  pointer-events: none;
+  will-change: opacity, transform;
+}
+.about-copy {
+  opacity: var(--about-copy-opacity, 1) !important;
+  filter: blur(calc((1 - var(--about-copy-opacity, 1)) * 10px));
+  transform: translate3d(0, calc((1 - var(--about-copy-opacity, 1)) * -3vh), 0);
+  pointer-events: none;
+}
+.about-contact {
+  position: sticky;
+  z-index: 4;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  min-height: 0;
+  margin: -100vh 0 0;
+  padding: 10vh var(--pad) 25px;
+  background: transparent;
+  opacity: var(--about-contact-opacity, 0);
+  transform: translate3d(0, calc((1 - var(--about-contact-opacity, 0)) * 4vh), 0);
+  pointer-events: none;
+  will-change: opacity, transform;
+}
+.about-contact .contact-placeholder { pointer-events: auto; }
+.about-contact h2 { margin: 5vh 0; }
+
+@media (max-width: 760px) {
+  .hero { height: 245svh; }
+  .hero-image-sharp {
+    clip-path: circle(calc(10% + var(--hero-progress) * 122%) at var(--mx) var(--my));
+  }
+  .portrait-slide.portrait-vertical .portrait-subject,
+  .portrait-slide.portrait-vertical.is-active .portrait-subject {
+    object-fit: cover;
+    object-position: center 34%;
+    transform: scale(1.08);
+  }
+  .portrait-slide:last-child.is-active > img,
+  .interlude-layer { object-position: 58% center; }
+
+  .hospitality-cover h2 {
+    top: 21vh;
+    right: var(--pad);
+    max-width: none;
+    font-size: 14.2vw;
+    line-height: .78;
+    letter-spacing: -.095em;
+  }
+  .hospitality-cover h2 em {
+    margin: .34em 0 0;
+    font-size: .62em;
+    line-height: 1.15;
+    text-align: right;
+  }
+  .archive-hero h2 {
+    right: var(--pad);
+    bottom: 25vh;
+    font-size: 15.3vw;
+    line-height: .76;
+  }
+  .archive-hero h2 em {
+    margin: .3em 0 0 20vw;
+    font-size: .6em;
+    line-height: 1.12;
+  }
+  .archive-open { bottom: 5vh; }
+
+  .about { height: 280svh; }
+  .about-images,
+  .about-copy,
+  .about-contact { height: 100svh; }
+  .about-images img { object-position: 52% center; }
+  .about-copy { padding: 14vh var(--pad) 8vh; }
+  .about-contact { padding: 14vh var(--pad) 24px; }
+  .about-contact h2 { margin: auto 0 6vh; font-size: 18vw; line-height: .76; }
+  .about-contact h2 em { font-size: .66em; }
+}

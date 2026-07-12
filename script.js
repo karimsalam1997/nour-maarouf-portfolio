@@ -7,6 +7,7 @@ const menuPanel = document.querySelector('#menuPanel');
 const ambientAudio = document.querySelector('#ambientAudio');
 const audioToggle = document.querySelector('#audioToggle');
 const audioLabel = document.querySelector('.audio-label');
+const contactLink = document.querySelector('.contact-link');
 const hero = document.querySelector('#hero');
 const portraitsScene = document.querySelector('.portraits-scene');
 const portraitSlides = [...document.querySelectorAll('.portrait-slide')];
@@ -48,6 +49,7 @@ let ticking = false;
 let manualPlateScrollY = null;
 let manualPortraitScrollY = null;
 let manualDrinkScrollY = null;
+let heroTouchAnchored = false;
 
 function savePreference(key, value) {
   try { window.localStorage?.setItem(key, value); } catch (_) {}
@@ -72,15 +74,28 @@ function setMenu(open) {
   body.classList.toggle('is-locked', open);
 }
 
+function targetScrollTop(target, hash) {
+  if (hash === '#contact') {
+    return aboutScene.offsetTop + (aboutScene.offsetHeight - window.innerHeight) * .73;
+  }
+  return target.getBoundingClientRect().top + window.scrollY;
+}
+
 menuToggle.addEventListener('click', () => setMenu(!menuPanel.classList.contains('is-open')));
 menuPanel.querySelectorAll('a').forEach(link => link.addEventListener('click', event => {
   const target = document.querySelector(link.hash);
   setMenu(false);
   if (!target) return;
   event.preventDefault();
-  window.scrollTo({ top: target.offsetTop, behavior: 'auto' });
+  window.scrollTo({ top: targetScrollTop(target, link.hash), behavior: 'auto' });
   history.replaceState(null, '', link.hash);
 }));
+contactLink.addEventListener('click', event => {
+  event.preventDefault();
+  const target = document.querySelector('#contact');
+  window.scrollTo({ top: targetScrollTop(target, '#contact'), behavior: 'smooth' });
+  history.replaceState(null, '', '#contact');
+});
 document.addEventListener('keydown', event => {
   if (event.key === 'Escape') {
     setMenu(false);
@@ -137,6 +152,11 @@ function sceneProgress(element) {
   const rect = element.getBoundingClientRect();
   const distance = Math.max(1, element.offsetHeight - window.innerHeight);
   return Math.max(0, Math.min(1, -rect.top / distance));
+}
+
+function smoothStep(start, end, value) {
+  const progress = Math.max(0, Math.min(1, (value - start) / Math.max(.0001, end - start)));
+  return progress * progress * (3 - 2 * progress);
 }
 
 function showPlate(index, manual = false) {
@@ -257,6 +277,13 @@ function paint() {
   const interludeProgress = sceneProgress(interludeScene);
   const archiveProgress = sceneProgress(archiveScene);
   const aboutProgress = sceneProgress(aboutScene);
+  const portraitExit = smoothStep(.855, .995, portraitProgress);
+  const interludeEntry = smoothStep(0, .24, interludeProgress);
+  const aboutBlur = smoothStep(.3, .58, aboutProgress);
+  const aboutCopyOpacity = 1 - smoothStep(.34, .56, aboutProgress);
+  const aboutContactOpacity = smoothStep(.5, .72, aboutProgress);
+  const aboutSunRise = smoothStep(.3, .5, aboutProgress);
+  const aboutSunFall = 1 - smoothStep(.58, .82, aboutProgress);
   root.style.setProperty('--hero-progress', heroProgress.toFixed(4));
   root.style.setProperty('--plate-progress', plateProgress.toFixed(4));
   root.style.setProperty('--portrait-progress', portraitProgress.toFixed(4));
@@ -267,6 +294,12 @@ function paint() {
   root.style.setProperty('--about-progress', aboutProgress.toFixed(4));
   root.style.setProperty('--about-fade', Math.max(.08, 1 - aboutProgress * .92).toFixed(4));
   root.style.setProperty('--hospitality-progress', drinkProgress.toFixed(4));
+  root.style.setProperty('--portrait-exit', portraitExit.toFixed(4));
+  root.style.setProperty('--interlude-entry', interludeEntry.toFixed(4));
+  root.style.setProperty('--about-image-blur', (aboutBlur * 8).toFixed(3));
+  root.style.setProperty('--about-copy-opacity', aboutCopyOpacity.toFixed(4));
+  root.style.setProperty('--about-contact-opacity', aboutContactOpacity.toFixed(4));
+  root.style.setProperty('--about-sun', (aboutSunRise * aboutSunFall).toFixed(4));
 
   if (manualPlateScrollY !== null && Math.abs(window.scrollY - manualPlateScrollY) > 8) manualPlateScrollY = null;
   if (manualPortraitScrollY !== null && Math.abs(window.scrollY - manualPortraitScrollY) > 8) manualPortraitScrollY = null;
@@ -297,10 +330,23 @@ function requestPaint() {
   }
 }
 
-hero.addEventListener('pointermove', event => {
+function setHeroFocus(event) {
   const rect = hero.getBoundingClientRect();
-  root.style.setProperty('--mx', `${((event.clientX - rect.left) / rect.width * 100).toFixed(1)}%`);
-  root.style.setProperty('--my', `${((event.clientY - rect.top) / window.innerHeight * 100).toFixed(1)}%`);
+  const x = Math.max(12, Math.min(88, (event.clientX - rect.left) / rect.width * 100));
+  const y = Math.max(18, Math.min(82, event.clientY / window.innerHeight * 100));
+  root.style.setProperty('--mx', `${x.toFixed(1)}%`);
+  root.style.setProperty('--my', `${y.toFixed(1)}%`);
+}
+
+hero.addEventListener('pointerdown', event => {
+  if (event.pointerType === 'mouse' || heroTouchAnchored) return;
+  setHeroFocus(event);
+  heroTouchAnchored = true;
+}, { passive: true });
+
+hero.addEventListener('pointermove', event => {
+  if (event.pointerType !== 'mouse') return;
+  setHeroFocus(event);
 });
 
 let reelDragging = false;
