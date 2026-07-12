@@ -50,6 +50,37 @@ let manualPlateScrollY = null;
 let manualPortraitScrollY = null;
 let manualDrinkScrollY = null;
 let heroTouchAnchored = false;
+let smoothScroll = null;
+
+function initSmoothScroll() {
+  if (smoothScroll || !window.Lenis || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  smoothScroll = new window.Lenis({
+    autoRaf: true,
+    lerp: .1,
+    smoothWheel: true,
+    syncTouch: true,
+    syncTouchLerp: .075,
+    touchInertiaExponent: 1.7,
+    touchMultiplier: 1,
+    allowNestedScroll: true,
+    stopInertiaOnNavigate: true
+  });
+  smoothScroll.on('scroll', requestPaint);
+}
+
+function syncSmoothScrollLock() {
+  if (!smoothScroll) return;
+  if (body.classList.contains('is-locked')) smoothScroll.stop();
+  else smoothScroll.start();
+}
+
+function scrollPageTo(top, smooth = false) {
+  if (smoothScroll) {
+    smoothScroll.scrollTo(top, smooth ? { duration: 1.05 } : { immediate: true });
+    return;
+  }
+  window.scrollTo({ top, behavior: smooth ? 'smooth' : 'auto' });
+}
 
 function savePreference(key, value) {
   try { window.localStorage?.setItem(key, value); } catch (_) {}
@@ -58,6 +89,8 @@ function savePreference(key, value) {
 function closeLoader() {
   loader.classList.add('is-gone');
   body.classList.remove('is-locked');
+  initSmoothScroll();
+  syncSmoothScrollLock();
   savePreference('nour-audio', 'on');
   ambientAudio.muted = false;
   playAudio();
@@ -72,6 +105,7 @@ function setMenu(open) {
   menuToggle.setAttribute('aria-expanded', String(open));
   menuToggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
   body.classList.toggle('is-locked', open);
+  syncSmoothScrollLock();
 }
 
 function targetScrollTop(target, hash) {
@@ -87,13 +121,13 @@ menuPanel.querySelectorAll('a').forEach(link => link.addEventListener('click', e
   setMenu(false);
   if (!target) return;
   event.preventDefault();
-  window.scrollTo({ top: targetScrollTop(target, link.hash), behavior: 'auto' });
+  scrollPageTo(targetScrollTop(target, link.hash));
   history.replaceState(null, '', link.hash);
 }));
 contactLink.addEventListener('click', event => {
   event.preventDefault();
   const target = document.querySelector('#contact');
-  window.scrollTo({ top: targetScrollTop(target, '#contact'), behavior: 'smooth' });
+  scrollPageTo(targetScrollTop(target, '#contact'), true);
   history.replaceState(null, '', '#contact');
 });
 document.addEventListener('keydown', event => {
@@ -122,7 +156,9 @@ async function playAudio() {
     savePreference('nour-audio', 'on');
     renderAudioState(true);
   } catch (error) {
-    console.error('Audio playback failed:', error?.name, error?.message);
+    if (error?.name !== 'NotAllowedError') {
+      console.warn('Audio playback failed:', error?.name, error?.message);
+    }
     renderAudioState(false);
     audioToggle.dataset.audioError = error?.name || 'PlaybackError';
     audioLabel.textContent = 'Tap sound';
@@ -201,6 +237,7 @@ function setHospitality(open) {
   hospitalityDrawer.classList.toggle('is-open', open);
   hospitalityDrawer.setAttribute('aria-hidden', String(!open));
   body.classList.toggle('is-locked', open);
+  syncSmoothScrollLock();
   if (open) hospitalityClose.focus();
   else hospitalityOpen.focus();
 }
@@ -249,6 +286,7 @@ function setArchive(open) {
   archiveLibrary.classList.toggle('is-open', open);
   archiveLibrary.setAttribute('aria-hidden', String(!open));
   body.classList.toggle('is-locked', open);
+  syncSmoothScrollLock();
   if (open) {
     archiveLibrary.scrollTop = 0;
     archiveClose.focus();
