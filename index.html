@@ -10,7 +10,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Serif+Display:ital@0;1&family=Noto+Kufi+Arabic:wght@500;700;900&family=Noto+Naskh+Arabic:wght@500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.23/dist/lenis.css">
-  <link rel="stylesheet" href="styles.css?v=19">
+  <link rel="stylesheet" href="styles.css?v=21">
+  <link rel="stylesheet" href="spatial-gallery.css?v=1">
 </head>
 <body>
   <div class="loader" id="loader">
@@ -46,10 +47,11 @@
       <img src="assets/place-hills-01.jpeg" alt="">
     </div>
     <div class="menu-copy">
-      <p>Index · 01—06</p>
+      <p>Index · 01—07</p>
       <a href="#top">Home</a>
       <a href="#portraits">Portraits</a>
       <a href="#places">Places</a>
+      <a href="#sessions">Portrait sessions</a>
       <a href="#hospitality">Hospitality</a>
       <a href="#archive">Archive</a>
       <a href="#about">About Nour</a>
@@ -66,6 +68,8 @@
         <div class="hero-grid" aria-hidden="true"></div>
         <p class="hero-index">Frame 001<br>Independent photographer</p>
         <h1 class="hero-latin"><span>NOUR</span><span>MAAROUF</span></h1>
+        <img class="hero-image hero-image-sharp hero-image-stillness hero-image-face" src="assets/portrait-formal-01.jpeg" alt="" aria-hidden="true">
+        <h1 class="hero-latin hero-latin-outline" aria-hidden="true"><span>NOUR</span><span>MAAROUF</span></h1>
         <div class="hero-arabic" lang="ar" dir="rtl" aria-label="Nour Maarouf in Arabic">نور معروف</div>
         <div class="hero-deck">
           <p>Portraits · Restaurants · Events</p>
@@ -84,7 +88,7 @@
       </h2>
       <div class="intro-foot">
         <p>Nour works across portrait commissions, restaurants and events. The subject changes. Her attention does not.</p>
-        <span>Selected work · 38 frames</span>
+        <span>Selected work · 74 frames</span>
       </div>
     </section>
 
@@ -157,7 +161,7 @@
       <div class="places-sticky">
         <div class="project-head project-head-light">
           <p><span>02</span> Places · أماكن</p>
-          <p>Across the road · Five frames</p>
+          <p>Across the road · Nine frames</p>
         </div>
         <div class="places-title"><span>NEAR</span><em lang="ar" dir="rtl">أماكن</em><span>FAR</span></div>
         <div class="places-stage">
@@ -165,17 +169,148 @@
           <figure class="place-slide"><img src="assets/place-hills-02.jpeg" alt="A village across green hills"><figcaption>Place 02 · Across the valley</figcaption></figure>
           <figure class="place-slide"><img src="assets/place-garden-01.jpeg" alt="A view through branches toward the hills"><figcaption>Place 03 · Through the branches</figcaption></figure>
           <figure class="place-slide"><img src="assets/place-garden-02.jpeg" alt="Sunlit clearing beneath trees"><figcaption>Place 04 · The clearing</figcaption></figure>
-          <figure class="place-slide"><img src="assets/place-port-01.jpeg" alt="Shipping containers beside the sea"><figcaption>Place 05 · Port and water</figcaption></figure>
+          <figure class="place-slide"><img src="assets/place-ridges-03.webp" alt="Mountain ridges beyond sunlit foreground plants"><figcaption>Place 05 · Ridges in high grass</figcaption></figure>
+          <figure class="place-slide"><img src="assets/place-port-01.jpeg" alt="Shipping containers beside the sea"><figcaption>Place 06 · Port and water</figcaption></figure>
+          <figure class="place-slide"><img src="assets/place-cloudplain-01.webp" alt="A dark plain beneath mountains and a cloud-filled sky"><figcaption>Place 07 · The cloud plain</figcaption></figure>
+          <figure class="place-slide"><img src="assets/place-sheep-motion-01.webp" alt="Sheep on a green slope glimpsed through motion-blurred trees"><figcaption>Place 08 · Through moving trees</figcaption></figure>
+          <figure class="place-slide"><img src="assets/place-tree-tunnel-01.webp" alt="A tree-lined path opening into late sunlight"><figcaption>Place 09 · Toward the clearing</figcaption></figure>
         </div>
-        <div class="places-meta"><span>Frame <strong id="placeCurrent">01</strong> / 05</span><span>The horizon stays level.</span></div>
+        <div class="places-meta"><span>Frame <strong id="placeCurrent">01</strong> / 09</span><span>Seen while moving.</span></div>
       </div>
     </section>
+
+    <div class="spatial-stories" id="sessions">
+      <section class="tide-scene spatial-gallery" aria-labelledby="tide-title">
+        <div class="tide-sticky spatial-gallery-sticky" tabindex="0" role="group" aria-roledescription="scroll gallery" aria-label="Beach portrait sequence. Scroll or swipe to move through eight photographs.">
+          <div class="tide-ambient" aria-hidden="true">
+            <img class="is-active" src="assets/shoreline/shore-01.webp" alt="">
+            <img src="assets/shoreline/shore-02.webp" alt="">
+            <img src="assets/shoreline/shore-03.webp" alt="">
+            <img src="assets/shoreline/shore-04.webp" alt="">
+            <img src="assets/shoreline/shore-05.webp" alt="">
+            <img src="assets/shoreline/shore-06.webp" alt="">
+            <img src="assets/shoreline/shore-07.webp" alt="">
+            <img src="assets/shoreline/shore-08.webp" alt="">
+          </div>
+          <div class="tide-shade" aria-hidden="true"></div>
+          <div class="project-head project-head-light tide-head">
+            <p><span>03</span> Beach portraits · الشاطئ</p>
+            <p>One continuous study · Eight frames</p>
+          </div>
+          <h2 class="tide-title" id="tide-title"><span>CLOSER.</span><em lang="ar" dir="rtl">أقرب</em></h2>
+          <p class="tide-deck">One movement.<br>Eight exposures.</p>
+          <div class="tide-stage">
+            <figure class="tide-frame is-current" style="--focus-x: 42%; --focus-y: 43%; --image: url('assets/shoreline/shore-01.webp')">
+              <img src="assets/shoreline/shore-01.webp" alt="Woman in black seated on a white chair at the beach" loading="lazy" decoding="async">
+              <figcaption><span>01</span><span>DSC03660</span></figcaption>
+            </figure>
+            <figure class="tide-frame" style="--focus-x: 44%; --focus-y: 44%; --image: url('assets/shoreline/shore-02.webp')">
+              <img src="assets/shoreline/shore-02.webp" alt="Seated beach portrait seen from slightly farther back" loading="lazy" decoding="async">
+              <figcaption><span>02</span><span>DSC03665</span></figcaption>
+            </figure>
+            <figure class="tide-frame" style="--focus-x: 45%; --focus-y: 44%; --image: url('assets/shoreline/shore-03.webp')">
+              <img src="assets/shoreline/shore-03.webp" alt="Woman in sunglasses looking up from a beach chair" loading="lazy" decoding="async">
+              <figcaption><span>03</span><span>DSC03668</span></figcaption>
+            </figure>
+            <figure class="tide-frame" style="--focus-x: 52%; --focus-y: 43%; --image: url('assets/shoreline/shore-04.webp')">
+              <img src="assets/shoreline/shore-04.webp" alt="Close beach portrait with wet curls and a direct gaze" loading="lazy" decoding="async">
+              <figcaption><span>04</span><span>DSC03676</span></figcaption>
+            </figure>
+            <figure class="tide-frame" style="--focus-x: 54%; --focus-y: 43%; --image: url('assets/shoreline/shore-05.webp')">
+              <img src="assets/shoreline/shore-05.webp" alt="Beach portrait in profile against sand and a white chair" loading="lazy" decoding="async">
+              <figcaption><span>05</span><span>DSC03680</span></figcaption>
+            </figure>
+            <figure class="tide-frame" style="--focus-x: 50%; --focus-y: 43%; --image: url('assets/shoreline/shore-06.webp')">
+              <img src="assets/shoreline/shore-06.webp" alt="Close portrait with the blue sea behind the woman's face" loading="lazy" decoding="async">
+              <figcaption><span>06</span><span>DSC03698</span></figcaption>
+            </figure>
+            <figure class="tide-frame" style="--focus-x: 61%; --focus-y: 43%; --image: url('assets/shoreline/shore-07.webp')">
+              <img src="assets/shoreline/shore-07.webp" alt="Tight beach portrait cropped across the woman's eyes" loading="lazy" decoding="async">
+              <figcaption><span>07</span><span>DSC03700</span></figcaption>
+            </figure>
+            <figure class="tide-frame" style="--focus-x: 73%; --focus-y: 43%; --image: url('assets/shoreline/shore-08.webp')">
+              <img src="assets/shoreline/shore-08.webp" alt="Extreme close beach portrait centred on one eye" loading="lazy" decoding="async">
+              <figcaption><span>08</span><span>DSC03701</span></figcaption>
+            </figure>
+          </div>
+          <div class="tide-aperture-ring" aria-hidden="true"></div>
+          <div class="tide-interface">
+            <span>Frame <strong id="tideCurrent" aria-live="polite" aria-atomic="true">01</strong> / 08</span>
+            <span class="spatial-swipe-hint">Scroll · drag · swipe</span>
+          </div>
+          <div class="tide-progress" aria-hidden="true"><i></i></div>
+        </div>
+      </section>
+
+      <section class="afterlight-scene spatial-gallery" id="afterlight" aria-labelledby="afterlight-title">
+        <div class="afterlight-sticky spatial-gallery-sticky" tabindex="0" role="group" aria-roledescription="spatial scroll gallery" aria-label="Portrait room in three-dimensional space. Scroll or swipe through twenty-four photographs.">
+          <div class="afterlight-warmwash" aria-hidden="true"></div>
+          <div class="afterlight-redwash" aria-hidden="true"></div>
+          <div class="project-head project-head-light afterlight-head">
+            <p><span>04</span> Portrait session · جلسة تصوير</p>
+            <p>Room light → projection red · Twenty-four frames</p>
+          </div>
+          <h2 class="afterlight-title" id="afterlight-title"><span>AFTER</span><span>LIGHT.</span><em lang="ar" dir="rtl">بعد الضوء</em></h2>
+          <div class="afterlight-camera">
+            <div class="afterlight-world">
+              <div class="after-tableau layout-triad is-current" data-range="01—03" data-tone="warm">
+                <figure class="after-frame is-portrait"><img src="assets/afterlight/room-01.webp" alt="Woman reclining in a green chair beside a brass gramophone" loading="lazy" decoding="async"><figcaption><span>01</span><span>DSC05136</span></figcaption></figure>
+                <figure class="after-frame is-portrait"><img src="assets/afterlight/room-02.webp" alt="Woman stretching back beneath a patterned wall hanging" loading="lazy" decoding="async"><figcaption><span>02</span><span>DSC05162</span></figcaption></figure>
+                <figure class="after-frame is-portrait"><img src="assets/afterlight/room-03.webp" alt="Seated portrait against woven red patterns and green upholstery" loading="lazy" decoding="async"><figcaption><span>03</span><span>DSC05165</span></figcaption></figure>
+              </div>
+              <div class="after-tableau layout-quad" data-range="04—07" data-tone="warm">
+                <figure class="after-frame is-portrait"><img src="assets/afterlight/room-04.webp" alt="Woman looking directly toward the camera from a green chair" loading="lazy" decoding="async"><figcaption><span>04</span><span>DSC05167</span></figcaption></figure>
+                <figure class="after-frame is-portrait"><img src="assets/afterlight/room-05.webp" alt="Woman curled into a green chair beside a brass gramophone" loading="lazy" decoding="async"><figcaption><span>05</span><span>DSC05171</span></figcaption></figure>
+                <figure class="after-frame is-landscape"><img src="assets/afterlight/room-06.webp" alt="Portrait with folded arms under warm room light" loading="lazy" decoding="async"><figcaption><span>06</span><span>DSC05176</span></figcaption></figure>
+                <figure class="after-frame is-landscape"><img src="assets/afterlight/room-07.webp" alt="Woman resting her chin on her arms beside the gramophone" loading="lazy" decoding="async"><figcaption><span>07</span><span>DSC05177</span></figcaption></figure>
+              </div>
+              <div class="after-tableau layout-triad" data-range="08—10" data-tone="warm">
+                <figure class="after-frame is-portrait"><img src="assets/afterlight/room-08.webp" alt="Seated portrait against vertical wooden slats" loading="lazy" decoding="async"><figcaption><span>08</span><span>DSC05188</span></figcaption></figure>
+                <figure class="after-frame is-landscape"><img src="assets/afterlight/room-09.webp" alt="Reclining portrait on a pale sofa against a wooden wall" loading="lazy" decoding="async"><figcaption><span>09</span><span>DSC05193</span></figcaption></figure>
+                <figure class="after-frame is-portrait"><img src="assets/afterlight/room-10.webp" alt="Close portrait framed by a patterned textile" loading="lazy" decoding="async"><figcaption><span>10</span><span>DSC05197</span></figcaption></figure>
+              </div>
+              <div class="after-tableau layout-quad" data-range="11—14" data-tone="warm">
+                <figure class="after-frame is-landscape"><img src="assets/afterlight/room-11.webp" alt="Woman reclining beside a green chair and brass gramophone" loading="lazy" decoding="async"><figcaption><span>11</span><span>DSC05213</span></figcaption></figure>
+                <figure class="after-frame is-landscape"><img src="assets/afterlight/room-12.webp" alt="Wide warm portrait with one hand behind the woman's head" loading="lazy" decoding="async"><figcaption><span>12</span><span>DSC05216</span></figcaption></figure>
+                <figure class="after-frame is-portrait"><img src="assets/afterlight/room-13.webp" alt="Close portrait in low amber light with a hand at the collar" loading="lazy" decoding="async"><figcaption><span>13</span><span>DSC05238</span></figcaption></figure>
+                <figure class="after-frame is-portrait"><img src="assets/afterlight/room-14.webp" alt="Close portrait in amber light looking into the camera" loading="lazy" decoding="async"><figcaption><span>14</span><span>DSC05241</span></figcaption></figure>
+              </div>
+              <div class="after-tableau layout-single telephone-pivot" data-range="15" data-tone="warm">
+                <figure class="after-frame is-landscape"><img src="assets/afterlight/room-15.webp" alt="Woman smiling beside a vintage telephone on a patterned rug" loading="lazy" decoding="async"><figcaption><span>15</span><span>DSC05317</span></figcaption></figure>
+              </div>
+              <div class="after-tableau layout-duo" data-range="16—17" data-tone="red">
+                <figure class="after-frame is-landscape"><img src="assets/afterlight/red-01.webp" alt="Woman in black beneath an intense red projection" loading="lazy" decoding="async"><figcaption><span>16</span><span>DSC05335</span></figcaption></figure>
+                <figure class="after-frame is-landscape"><img src="assets/afterlight/red-02.webp" alt="Portrait against red projected lights with one hand at the temple" loading="lazy" decoding="async"><figcaption><span>17</span><span>DSC05363</span></figcaption></figure>
+              </div>
+              <div class="after-tableau layout-triad" data-range="18—20" data-tone="red">
+                <figure class="after-frame is-landscape"><img src="assets/afterlight/red-03.webp" alt="Red projection portrait with the subject leaning toward the camera" loading="lazy" decoding="async"><figcaption><span>18</span><span>DSC05384</span></figcaption></figure>
+                <figure class="after-frame is-landscape"><img src="assets/afterlight/red-04.webp" alt="Direct portrait against a red projected wall" loading="lazy" decoding="async"><figcaption><span>19</span><span>DSC05386</span></figcaption></figure>
+                <figure class="after-frame is-landscape"><img src="assets/afterlight/red-05.webp" alt="Woman looking down beneath red light and dark projected circles" loading="lazy" decoding="async"><figcaption><span>20</span><span>DSC05392</span></figcaption></figure>
+              </div>
+              <div class="after-tableau layout-triad" data-range="21—23" data-tone="red">
+                <figure class="after-frame is-landscape"><img src="assets/afterlight/red-06.webp" alt="Red-lit portrait beside a large dark projected circle" loading="lazy" decoding="async"><figcaption><span>21</span><span>DSC05395</span></figcaption></figure>
+                <figure class="after-frame is-landscape"><img src="assets/afterlight/red-07.webp" alt="Portrait framed by a field of small red projected lights" loading="lazy" decoding="async"><figcaption><span>22</span><span>DSC05415</span></figcaption></figure>
+                <figure class="after-frame is-landscape"><img src="assets/afterlight/red-08.webp" alt="Woman seated under red projection light looking down" loading="lazy" decoding="async"><figcaption><span>23</span><span>DSC05420</span></figcaption></figure>
+              </div>
+              <div class="after-tableau layout-single telephone-red" data-range="24" data-tone="red">
+                <figure class="after-frame is-landscape"><img src="assets/afterlight/red-09.webp" alt="Woman in a red cap smiling with a vintage telephone receiver" loading="lazy" decoding="async"><figcaption><span>24</span><span>DSC05447</span></figcaption></figure>
+              </div>
+            </div>
+          </div>
+          <div class="afterlight-interface">
+            <span>Frames <strong id="afterlightCurrent" aria-live="polite" aria-atomic="true">01—03</strong> / 24</span>
+            <span class="spatial-swipe-hint">Scroll · drag · swipe</span>
+          </div>
+          <div class="afterlight-progress" aria-hidden="true"><i></i></div>
+        </div>
+      </section>
+    </div>
 
     <section class="drinks-scene hospitality-portal" id="hospitality">
       <div class="hospitality-cover">
         <img src="assets/hospitality-group.jpeg" alt="Friends sharing drinks in a restaurant">
         <div class="hospitality-shade"></div>
-        <p class="section-label">03 · Restaurants, people and atmosphere</p>
+        <p class="section-label">05 · Restaurants, people and atmosphere</p>
         <h2>HOSPITALITY<em lang="ar" dir="rtl">ضيافة</em></h2>
         <p>Food, drink, service and the people who give a room its life.</p>
         <button class="hospitality-open" id="hospitalityOpen" type="button">Enter the restaurant <span>↗</span></button>
@@ -184,7 +319,7 @@
         <button class="hospitality-close" id="hospitalityClose" type="button" aria-label="Close hospitality gallery">Close ×</button>
       <div class="drinks-sticky">
         <div class="project-head project-head-light">
-          <p><span>03</span> Hospitality · ضيافة</p>
+          <p><span>05</span> Hospitality · ضيافة</p>
           <p>Selected restaurant work · Twelve frames</p>
         </div>
         <h2>AT THE<br><em>TABLE.</em><b lang="ar" dir="rtl">على المائدة</b></h2>
@@ -213,10 +348,13 @@
       <div class="archive-hero">
         <img src="assets/nour-architecture.jpeg" alt="Nour photographing historic stone architecture">
         <div class="archive-shade"></div>
-        <p class="section-label">04 · Field work</p>
+        <p class="section-label">06 · Field work</p>
         <h2 id="archive-title">THE ARCHIVE<em lang="ar" dir="rtl">الأرشيف</em></h2>
         <p class="archive-note">Portraits, places, events and commissioned work.</p>
-        <button class="archive-open" id="archiveOpen" type="button">Open the complete library <span>38 frames ↗</span></button>
+        <button class="archive-open" id="archiveOpen" type="button">Open the complete library <span>74 frames ↗</span></button>
+      </div>
+      <div class="archive-only-sources" hidden aria-hidden="true">
+        <img src="assets/nour-studio.jpeg" alt="Nour working with her camera in the studio">
       </div>
       <header data-reveal>
         <p class="section-label">Proofs · Across disciplines</p>
@@ -286,7 +424,7 @@
         <img class="about-c" src="assets/nour-blue-portrait.jpg" alt="" aria-hidden="true">
       </div>
       <div class="about-copy" data-reveal>
-        <p class="section-label">05 · Behind the lens · خلف العدسة</p>
+        <p class="section-label">07 · Behind the lens · خلف العدسة</p>
         <h2>NOUR FOLLOWS<br><em>THE LIGHT.</em><b lang="ar" dir="rtl">نور تتبع الضوء</b></h2>
         <p>Nour is an independent photographer based in Damascus, Syria. She works across portraits, restaurants and events, moving between controlled sets and the world as she finds it.</p>
       </div>
@@ -300,6 +438,7 @@
   </main>
 
   <script src="https://unpkg.com/lenis@1.3.23/dist/lenis.min.js"></script>
-  <script src="script.js?v=19"></script>
+  <script src="script.js?v=20"></script>
+  <script src="spatial-gallery.js?v=1"></script>
 </body>
 </html>

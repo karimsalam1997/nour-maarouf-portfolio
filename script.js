@@ -37,6 +37,7 @@ const libraryGrid = document.querySelector('#libraryGrid');
 const libraryFilters = [...document.querySelectorAll('.library-filters button')];
 const archiveScene = document.querySelector('.archive-scene');
 const aboutScene = document.querySelector('.about');
+const spatialScenes = [...document.querySelectorAll('.spatial-gallery')];
 const reel = document.querySelector('#reel');
 const parallaxImages = [...document.querySelectorAll('[data-speed]')];
 
@@ -53,11 +54,12 @@ let smoothScroll = null;
 
 function initSmoothScroll() {
   if (smoothScroll || !window.Lenis || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const nativeTouchScroll = window.matchMedia('(pointer: coarse)').matches;
   smoothScroll = new window.Lenis({
     autoRaf: true,
     lerp: .1,
     smoothWheel: true,
-    syncTouch: true,
+    syncTouch: !nativeTouchScroll,
     syncTouchLerp: .075,
     touchInertiaExponent: 1.7,
     touchMultiplier: 1,
@@ -245,7 +247,7 @@ hospitalityOpen.addEventListener('click', () => setHospitality(true));
 hospitalityClose.addEventListener('click', () => setHospitality(false));
 
 function imageCategory(src) {
-  if (src.includes('portrait-')) return 'portrait';
+  if (src.includes('portrait-') || src.includes('/shoreline/') || src.includes('/afterlight/')) return 'portrait';
   if (src.includes('place-') || src.includes('architecture')) return 'place';
   if (src.includes('food-') || src.includes('drink-') || src.includes('hospitality-')) return 'hospitality';
   return 'nour';
@@ -255,6 +257,7 @@ function buildLibrary() {
   if (libraryGrid.childElementCount) return;
   const seen = new Set();
   const images = [...document.querySelectorAll('img[src^="assets/"]')].filter(image => {
+    if (image.closest('.tide-ambient')) return false;
     if (seen.has(image.src)) return false;
     seen.add(image.src);
     return true;
@@ -359,7 +362,7 @@ function paint() {
     image.style.transform = `translate3d(0, ${offset.toFixed(1)}px, 0)`;
   });
   const headerProbe = 72;
-  const headerNeedsSpace = [portraitsScene, placesScene, drinksScene, archiveScene].some(scene => {
+  const headerNeedsSpace = [portraitsScene, placesScene, ...spatialScenes, drinksScene, archiveScene].some(scene => {
     const rect = scene.getBoundingClientRect();
     return rect.top <= headerProbe && rect.bottom >= headerProbe;
   });
@@ -434,7 +437,7 @@ const chapterObserver = new IntersectionObserver(entries => {
     }
   });
 }, { threshold: .52 });
-[portraitsScene, drinksScene, archiveScene, aboutScene].forEach(scene => chapterObserver.observe(scene));
+[portraitsScene, ...spatialScenes, drinksScene, archiveScene, aboutScene].forEach(scene => chapterObserver.observe(scene));
 
 window.addEventListener('scroll', requestPaint, { passive: true });
 window.addEventListener('resize', requestPaint);
